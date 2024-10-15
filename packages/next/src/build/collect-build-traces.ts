@@ -97,7 +97,7 @@ export async function collectBuildTraces({
   edgeRuntimeRoutes: RoutesUsingEdgeRuntime
   nextBuildSpan?: Span
   config: NextConfigComplete
-  buildTraceContext?: BuildTraceContext
+  buildTraceContext: BuildTraceContext
 }) {
   const startTime = Date.now()
   debug('starting build traces')
@@ -551,7 +551,7 @@ export async function collectBuildTraces({
       })
     }
 
-    const { entryNameFilesMap } = buildTraceContext?.chunksTrace || {}
+    const { entryNameFilesMap } = buildTraceContext.chunksTrace ?? {}
 
     await Promise.all(
       [
